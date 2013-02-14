@@ -13,9 +13,13 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, strong) UITextField *nameRegisterTextField;
+
 @property (nonatomic, strong) UITextField *userRegisterTextField;
 
 @property (nonatomic, strong) UITextField *passwordRegisterTextField;
+
+@property (nonatomic, strong) UITextField *rePasswordRegisterTextField;
 
 @property (nonatomic, strong) UITableView *loginTableView;
 

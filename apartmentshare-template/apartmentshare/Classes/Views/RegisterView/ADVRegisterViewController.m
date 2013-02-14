@@ -40,7 +40,7 @@
     
     self.title = @"Login";
     
-    self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
+    self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 310) style:UITableViewStyleGrouped];
     
     [self.loginTableView setScrollEnabled:NO];
     [self.loginTableView setBackgroundView:nil];
@@ -55,7 +55,9 @@
     [self.signupButton setBackgroundImage:[theme buttonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
     [self.signupButton setBackgroundImage:[theme buttonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     
-    
+    self.nameRegisterTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
+    [self.nameRegisterTextField setPlaceholder:@"fullname"];
+    [self.nameRegisterTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     
     self.userRegisterTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.userRegisterTextField setPlaceholder:@"Username"];
@@ -66,6 +68,11 @@
     [self.passwordRegisterTextField setPlaceholder:@"Password"];
     [self.passwordRegisterTextField setSecureTextEntry:YES];
     [self.passwordRegisterTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    
+    self.rePasswordRegisterTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
+    [self.rePasswordRegisterTextField setPlaceholder:@"RePassword"];
+    [self.rePasswordRegisterTextField setSecureTextEntry:YES];
+    [self.rePasswordRegisterTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     
 }
 
@@ -79,7 +86,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 2;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,13 +97,27 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsernameCell"];
         
+        [cell addSubview:self.nameRegisterTextField];
+        
+    }
+    else if(indexPath.row == 1){
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsernameCell"];
+        
         [cell addSubview:self.userRegisterTextField];
         
-    }else {
+    }
+    else if (indexPath.row == 2){
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PasswordCell"];
         
         [cell addSubview:self.passwordRegisterTextField];
+    }
+    else {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PasswordCell"];
+        
+        [cell addSubview:self.rePasswordRegisterTextField];
     }
     
     return cell;
